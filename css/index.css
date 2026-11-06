@@ -1,1 +1,545 @@
+:root {
+    --fondo-productos: #120a08;
+    --onda-h: clamp(24px, 4.2vw, 80px);
 
+    /* Motivos outline del manual de marca: limón, llama y chile */
+    --patron: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200' fill='none' stroke='white' stroke-opacity='.07' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='45' cy='45' r='22'/><circle cx='45' cy='45' r='16'/><path d='M45 23V67M23 45H67M29 29L61 61M61 29L29 61'/><path d='M140 100C150 115 162 122 158 140C155 154 142 160 133 156C122 151 118 138 124 126C128 133 132 134 134 130C136 120 134 110 140 100Z'/><path d='M110 30Q135 20 150 45Q155 60 170 62Q150 75 135 60Q112 50 110 30Z'/><path d='M110 30L104 22'/></svg>");
+}
+
+html {
+    scrollbar-color: var(--naranja) #111;
+}
+
+body {
+    background: var(--negro);
+    color: #fff;
+    font-family: var(--fuente-texto);
+    overflow-x: hidden;
+}
+
+/* Títulos de sección con estilo sticker */
+.productos h2,
+.sabores h2,
+.nosotros h2 {
+    font-family: var(--fuente-titulo);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: 1px;
+}
+
+/* ---------- HERO ---------- */
+/* El banner se muestra completo: la caja mantiene la proporción de la imagen */
+.hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1915 / 821;
+    background-color: #000;
+    background-image: url("../img/spicy_up_banner_sin_logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/* Enlace invisible sobre el botón "COMPRAR AHORA" que viene dibujado en el banner.
+   Está en porcentajes, así que sigue al botón en cualquier tamaño de pantalla. */
+.hero-cta {
+    position: absolute;
+    left: 16.2%;
+    top: 75.8%;
+    width: 25.3%;
+    height: 15.5%;
+    border-radius: 999px;
+    
+    cursor: pointer;
+    transform: rotate(-8deg);
+    transition: box-shadow 0.25s ease;
+}
+
+.hero-cta:hover {
+     transform: rotate(-8deg);
+    box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.636),
+        0 0 34px 8px rgba(255, 208, 0, 0.719);
+}
+
+.hero-cta:active {
+    transform: rotate(-8deg) scale(0.97);
+}
+
+.hero-cta:focus-visible {
+    outline: 3px solid var(--amarillo);
+    outline-offset: 4px;
+}
+
+/* ---------- PRODUCTOS ---------- */
+.productos {
+    position: relative;
+    padding: 110px 24px 130px;
+    text-align: center;
+    background-color: var(--fondo-productos);
+    background-image:
+        var(--patron),
+        radial-gradient(circle 420px at 8% 65%, rgba(232, 53, 43, 0.22), transparent),
+        radial-gradient(circle 380px at 92% 88%, rgba(247, 148, 29, 0.18), transparent);
+    background-size: 200px 200px, auto, auto;
+}
+
+/* La onda sube y muerde el hero */
+.onda-superior {
+    position: absolute;
+    left: 0;
+    top: calc(var(--onda-h) * -0.6);
+    display: block;
+    width: 100%;
+    height: var(--onda-h);
+    fill: var(--fondo-productos);
+}
+
+.productos h2 {
+    color: var(--amarillo);
+    text-shadow: 3px 3px 0 var(--rojo), 6px 6px 0 rgba(0, 0, 0, 0.55);
+}
+
+.productos h2::after {
+    content: "";
+    display: block;
+    width: 160px;
+    height: 12px;
+    margin: 18px auto 0;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='12' viewBox='0 0 40 12'><path d='M0 6Q10 0 20 6T40 6' fill='none' stroke='%23f7941d' stroke-width='4' stroke-linecap='round'/></svg>") repeat-x;
+    background-size: 40px 12px;
+}
+
+.productos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 44px 36px;
+    max-width: 1280px;
+    margin: 64px auto 0;
+}
+
+/* Tarjetas tipo sticker: borde de color y sombra dura */
+.productos .producto {
+    --c: var(--rojo);
+    --cg: rgba(232, 53, 43, 0.4);
+    --t: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 56px 24px 30px;
+    border: 2px solid var(--c);
+    border-radius: 28px;
+    background: linear-gradient(160deg, #1b1b1b, #0a0a0a);
+    box-shadow: 8px 8px 0 var(--c);
+    transition: box-shadow 0.3s, opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+/* Colores de los chiles: rojo, naranja, amarillo (y verde para el emprendedor) */
+.productos .producto:nth-child(1) { --c: var(--rojo);     --cg: rgba(232, 53, 43, 0.4);  --t: #fff; }
+.productos .producto:nth-child(2) { --c: var(--naranja);  --cg: rgba(247, 148, 29, 0.4); --t: #111; }
+.productos .producto:nth-child(3) { --c: var(--amarillo); --cg: rgba(255, 210, 0, 0.4);  --t: #111; }
+.productos .producto:nth-child(4) { --c: var(--verde);    --cg: rgba(141, 198, 63, 0.4); --t: #111; }
+
+.productos .producto:hover {
+    box-shadow: 13px 13px 0 var(--c);
+}
+
+.productos .producto::before {
+    content: "MÁS PICANTE";
+    position: absolute;
+    top: -17px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: var(--c);
+    color: var(--t);
+    font-family: var(--fuente-titulo);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.productos .producto:nth-child(1)::before { content: "JUGOSAS"; }
+.productos .producto:nth-child(2)::before { content: "CON PALITO"; }
+.productos .producto:nth-child(3)::before { content: "LA ORIGINAL"; }
+.productos .producto:nth-child(4)::before { content: "EMPRENDE"; }
+
+/* Chile dentro de un círculo blanco con borde del color de la tarjeta */
+.producto img {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 1;
+    padding: 16px;
+    object-fit: contain;
+    border: 4px solid var(--c);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--gris-texto);
+    font-size: 0.9rem;
+    text-align: center;
+    transition: transform 0.4s;
+}
+
+.producto:hover img {
+    transform: scale(1.08) rotate(-4deg);
+}
+
+.producto h3 {
+    font-family: var(--fuente-titulo);
+    font-weight: 400;
+    font-size: 1.8rem;
+    letter-spacing: 0.5px;
+}
+
+.producto p {
+    max-width: 24ch;
+    color: var(--gris-texto);
+    line-height: 1.5;
+}
+
+.producto span {
+    padding: 4px 18px;
+    border: 2px dashed var(--amarillo);
+    border-radius: 14px;
+    background: #000;
+    color: var(--amarillo);
+    font-family: var(--fuente-titulo);
+    font-size: 1.6rem;
+}
+
+.productos .producto button {
+    margin-top: 8px;
+    padding: 13px 36px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(90deg, var(--amarillo), var(--naranja));
+    box-shadow: 0 5px 0 #b86a00;
+    color: #1a1a1a;
+    font-family: var(--fuente-titulo);
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.productos .producto button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #b86a00;
+}
+
+.productos .producto button:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #b86a00;
+}
+
+/* ---------- SABORES ---------- */
+.sabores {
+    position: relative;
+    padding: 130px 24px 140px;
+    text-align: center;
+    color: #fff;
+    background:
+        repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.09) 0 18px, transparent 18px 36px),
+        linear-gradient(135deg, var(--rojo), var(--naranja) 60%, var(--amarillo));
+}
+
+/* Ondas arriba (viene de productos) y abajo (va hacia nosotros) */
+.sabores::before,
+.sabores::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-repeat: repeat-x;
+    background-size: 100px 60px;
+    pointer-events: none;
+}
+
+.sabores::before {
+    top: -1px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'><path d='M0 0H100V28Q75 56 50 28T0 28Z' fill='%23120a08'/></svg>");
+}
+
+.sabores::after {
+    bottom: -1px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'><path d='M0 60V32Q25 4 50 32T100 32V60Z' fill='%230d0d0d'/></svg>");
+}
+
+.sabores h2 {
+    text-shadow: 3px 3px 0 #000;
+}
+
+.sabores > div {
+    max-width: 1200px;
+    margin: 48px auto 0;
+}
+
+.sabores h3 {
+    margin-top: 22px;
+    color: #fff;
+    font-family: var(--fuente-titulo);
+    font-weight: 400;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+.sabores p {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* Tarjetas de sabor creadas por main.js */
+.sabores .su-sabor {
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- NOSOTROS ---------- */
+.nosotros {
+    position: relative;
+    padding: 120px 24px 130px;
+    text-align: center;
+    overflow: hidden;
+    background-color: var(--negro);
+    background-image:
+        var(--patron),
+        radial-gradient(circle 400px at 50% 60%, rgba(141, 198, 63, 0.12), transparent);
+    background-size: 200px 200px, auto;
+}
+
+/* "BOOM" gigante en outline detrás del texto */
+.nosotros::before {
+    content: "BOOM";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-6deg);
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 210, 0, 0.14);
+    font-family: var(--fuente-titulo);
+    font-size: clamp(8rem, 28vw, 22rem);
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.nosotros h2 {
+    position: relative;
+    background: linear-gradient(90deg, var(--naranja), var(--amarillo));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.nosotros p {
+    position: relative;
+    max-width: 720px;
+    margin: 36px auto 0;
+    padding: 34px 38px;
+    border: 2px dashed rgba(141, 198, 63, 0.65);
+    border-radius: 24px;
+    background: rgba(22, 22, 22, 0.78);
+    color: #eaeaea;
+    font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+    line-height: 1.7;
+}
+
+.nosotros p::before,
+.nosotros p::after {
+    position: absolute;
+    font-size: 2.2rem;
+}
+
+.nosotros p::before {
+    content: "🍋";
+    top: -24px;
+    left: -14px;
+    transform: rotate(-15deg);
+}
+
+.nosotros p::after {
+    content: "🌶️";
+    bottom: -24px;
+    right: -10px;
+    transform: rotate(15deg);
+}
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 600px) {
+    .productos,
+    .sabores,
+    .nosotros {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .nosotros p {
+        padding: 26px 22px;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-cta {
+        transition: none;
+    }
+}
+
+/* ---------- NOSOTROS: fuego ---------- */
+.nosotros {
+    padding-bottom: clamp(200px, 26vw, 360px);
+}
+
+.nosotros h2,
+.nosotros p {
+    z-index: 1;
+}
+
+.fuego {
+    --alto: clamp(120px, 16vw, 230px);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: calc(var(--alto) * 2);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Resplandor naranja detrás de las llamas */
+.fuego::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 50% 100%,
+        rgba(255, 106, 0, 0.45),
+        rgba(232, 53, 43, 0.18) 45%,
+        transparent 75%);
+    opacity: 0;
+    transition: opacity 1.2s;
+}
+
+.nosotros.encendido .fuego::before {
+    opacity: 1;
+    animation: fuego-brillo 2.4s ease-in-out infinite alternate;
+}
+
+/* Dos capas de llamas: la imagen se repite a lo ancho */
+.llamas {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    background-image: url("../img/fuego.png");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: auto 100%;
+    transform-origin: 50% 100%;
+    transform: scaleY(0);
+}
+
+.llamas-atras {
+    height: calc(var(--alto) * 1.35);
+    background-position: 40% bottom;
+    opacity: 0.55;
+    filter: saturate(1.4) brightness(0.75) blur(1px);
+}
+
+.llamas-frente {
+    height: var(--alto);
+}
+
+/* Al encender: crecen desde abajo y luego bailan */
+.nosotros.encendido .llamas-frente {
+    animation:
+        llamas-encender 1s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards,
+        llamas-baile-frente 1.4s 1s ease-in-out infinite alternate;
+}
+
+.nosotros.encendido .llamas-atras {
+    animation:
+        llamas-encender 1.4s 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2) both,
+        llamas-baile-atras 2.1s 1.65s ease-in-out infinite alternate;
+}
+
+/* Chispas que suben */
+.chispa {
+    position: absolute;
+    bottom: 12%;
+    left: var(--x);
+    width: var(--s, 5px);
+    height: var(--s, 5px);
+    border-radius: 50%;
+    background: #ffd200;
+    box-shadow: 0 0 8px 3px #f7941d;
+    opacity: 0;
+}
+
+.nosotros.encendido .chispa {
+    animation: chispa-subir var(--t, 4s) var(--d, 0s) linear infinite;
+}
+
+/* La tarjeta se calienta con el fuego */
+.nosotros.encendido p {
+    animation: tarjeta-brasa 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes llamas-encender {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
+}
+
+@keyframes llamas-baile-frente {
+    from { transform: scaleY(0.94) skewX(-1.2deg); }
+    to   { transform: scaleY(1.07) skewX(1.2deg); }
+}
+
+@keyframes llamas-baile-atras {
+    from { transform: scaleY(1.06) skewX(1.8deg); }
+    to   { transform: scaleY(0.9) skewX(-1.8deg); }
+}
+
+@keyframes fuego-brillo {
+    from { opacity: 0.7; }
+    to   { opacity: 1; }
+}
+
+@keyframes chispa-subir {
+    0%   { transform: translate(0, 0) scale(1); opacity: 0; }
+    10%  { opacity: 1; }
+    100% { transform: translate(var(--dx, 20px), -280px) scale(0.2); opacity: 0; }
+}
+
+@keyframes tarjeta-brasa {
+    from { border-color: rgba(141, 198, 63, 0.65); box-shadow: 0 0 0 rgba(255, 106, 0, 0); }
+    to   { border-color: rgba(247, 148, 29, 0.9);  box-shadow: 0 0 40px rgba(255, 106, 0, 0.3); }
+}
+
+/* Sin animaciones si el usuario las desactivó: fuego quieto y visible */
+@media (prefers-reduced-motion: reduce) {
+    .llamas { transform: none !important; animation: none !important; }
+    .chispa { display: none; }
+    .fuego::before { opacity: 1; animation: none !important; }
+    .nosotros p { animation: none !important; }
+}
+
+/* Ajustes de presentación para entrega y demo */
+.precio-consulta {
+    display: block;
+    color: var(--amarillo);
+    font-size: .95rem;
+    font-weight: 800;
+    margin: 12px 0;
+}
+.producto button, .producto a {
+    cursor: pointer;
+}
+@media (max-width: 700px) {
+    .hero { background-size: cover; background-position: center; }
+    .productos { padding-left: 18px; padding-right: 18px; }
+}
