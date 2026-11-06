@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conoce Spicy Up: gomitas enchiladas, combinaciones intensas y una experiencia llena de sabor.">
+  <link rel="stylesheet" href="css/header-footer.css">
+  <link rel="shortcut icon" href="img/icono-removebg-preview.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Nosotros | Spicy Up</title>
+  <style>
+    :root{--su-lima:#8dc63f}
+    body{margin:0;background:#0d0d0d;color:#fff;font-family:var(--fuente-texto)}
+    .about-hero{position:relative;overflow:hidden;padding:clamp(70px,10vw,130px) 22px 90px;text-align:center;background:radial-gradient(circle at 15% 20%,#e8352b35,transparent 30%),radial-gradient(circle at 85% 75%,#ffd20020,transparent 30%),#111}
+    .about-hero:before{content:"🌶";position:absolute;font-size:clamp(10rem,30vw,24rem);opacity:.06;right:2%;top:-25%;transform:rotate(18deg)}
+    .eyebrow{display:inline-block;padding:8px 15px;border:1px solid #ffd20080;border-radius:99px;color:#ffd200;font-weight:800;letter-spacing:2px;font-size:.78rem}
+    h1,h2,h3{font-family:var(--fuente-titulo);font-weight:400}
+    .about-hero h1{position:relative;font-size:clamp(3rem,8vw,6rem);line-height:1;margin:22px 0;color:#ffd200;text-shadow:4px 4px 0 #e8352b}
+    .about-hero p{position:relative;max-width:690px;margin:0 auto;color:#e7e7e7;font-size:clamp(1rem,2vw,1.25rem);line-height:1.8}
+    .about-wrap{width:min(1100px,calc(100% - 40px));margin:0 auto;padding:75px 0}
+    .section-heading{text-align:center;margin-bottom:36px}
+    .section-heading h2{font-size:clamp(2.2rem,5vw,3.6rem);margin:0 0 12px}
+    .section-heading p{max-width:620px;margin:auto;color:#bdbdbd;line-height:1.7}
+    .story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .story-card{position:relative;padding:30px;border-radius:22px;background:linear-gradient(145deg,#1d1d1d,#121212);border:1px solid #ffffff16;box-shadow:0 16px 35px #0004}
+    .story-card .emoji{font-size:2.2rem}
+    .story-card h3{font-size:1.65rem;margin:15px 0 10px;color:#ffd200}
+    .story-card p{color:#c7c7c7;line-height:1.75;margin:0}
+    .values{background:#ffd200;color:#151515;padding:65px 20px}
+    .values-inner{width:min(1100px,100%);margin:auto;display:grid;grid-template-columns:1fr 2fr;align-items:center;gap:35px}
+    .values h2{font-size:clamp(2.5rem,5vw,4rem);line-height:1;margin:0}
+    .values p{line-height:1.75;font-weight:700}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+    .chips span{padding:10px 15px;border-radius:99px;background:#111;color:#fff;font-weight:800}
+    .about-cta{text-align:center;padding:75px 20px;background:linear-gradient(120deg,#e8352b,#a91e19)}
+    .about-cta h2{font-size:clamp(2.2rem,5vw,3.8rem);margin:0 0 12px}
+    .about-cta p{max-width:580px;margin:0 auto 25px;line-height:1.7}
+    .about-button{display:inline-block;padding:14px 24px;border-radius:99px;background:#ffd200;color:#111;font-weight:900;text-decoration:none;box-shadow:0 5px 0 #7c211b;transition:transform .2s}
+    .about-button:hover{transform:translateY(-3px)}
+    @media(max-width:760px){.story-grid{grid-template-columns:1fr}.values-inner{grid-template-columns:1fr;text-align:center}.chips{justify-content:center}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo"><a href="index.html" aria-label="Spicy Up, inicio"><img src="img/logo.png" alt="Spicy Up"></a></div>
+  <nav aria-label="Navegación principal">
+    <a href="index.html#productos">PRODUCTOS</a><a href="index.html#sabores">SABORES</a>
+    <a href="nosotros.html" aria-current="page">NOSOTROS</a><a href="contacto.html">CONTACTO</a>
+  </nav>
+  <a href="index.html#productos" class="btn-tienda">VER TIENDA <img src="img/bolsa-de-la-compra.png" alt=""></a>
+</header>
+<main>
+  <section class="about-hero">
+    <span class="eyebrow">MÁS QUE UNA GOMITA</span>
+    <h1>¡SUBE EL NIVEL<br>DEL ANTOJO!</h1>
+    <p>En Spicy Up convertimos las gomitas en una experiencia atrevida: mezclamos dulce, ácido y picante para quienes disfrutan probar algo diferente.</p>
+  </section>
+  <section class="about-wrap">
+    <div class="section-heading"><h2>¿QUÉ NOS MUEVE?</h2><p>Una marca hecha para compartir, descubrir sabores y disfrutar cada bocado con personalidad.</p></div>
+    <div class="story-grid">
+      <article class="story-card"><span class="emoji">🔥</span><h3>Nuestra esencia</h3><p>Nos inspiran los sabores intensos y las combinaciones que despiertan curiosidad. Queremos que cada producto se sienta divertido, memorable y lleno de carácter.</p></article>
+      <article class="story-card"><span class="emoji">🌶️</span><h3>Lo que ofrecemos</h3><p>Gomitas enchiladas con diferentes combinaciones, desde opciones clásicas hasta mezclas para quienes buscan un reto de sabor.</p></article>
+      <article class="story-card"><span class="emoji">💥</span><h3>Nuestra actitud</h3><p>Somos creatividad, cercanía y ganas de experimentar. Escuchamos a nuestra comunidad para seguir explorando nuevas formas de disfrutar los antojos.</p></article>
+    </div>
+  </section>
+  <section class="values">
+    <div class="values-inner"><h2>LOS INGREDIENTES<br>DE NUESTRA MARCA</h2><div><p>En Spicy Up creemos que una buena experiencia combina sabor, actitud y atención cercana. Cada detalle cuenta: desde la selección de combinaciones hasta la forma de presentar nuestros productos.</p><div class="chips"><span>Creatividad</span><span>Calidad</span><span>Pasión</span><span>Cercanía</span><span>Innovación</span></div></div></div>
+  </section>
+  <section class="about-cta"><h2>¿TE ATREVES A PROBAR?</h2><p>Descubre nuestros productos y encuentra la combinación que enciende tu antojo.</p><a class="about-button" href="index.html#productos">EXPLORAR PRODUCTOS →</a></section>
+</main>
+<footer><div class="footer-divider"></div><div class="footer-content"><div class="footer-logo"><img src="img/icono-removebg-preview.png" alt="" class="footer-logo-icono"><span>Spicy <strong>UP</strong></span></div><nav class="footer-nav"><a href="index.html#productos">PRODUCTOS</a><a href="index.html#sabores">SABORES</a><a href="nosotros.html">NOSOTROS</a><a href="contacto.html">CONTACTO</a></nav><div class="footer-contacto"><a href="mailto:spicy.upcontacto@gmail.com" class="footer-correo">spicy.upcontacto@gmail.com</a><a href="https://www.instagram.com/somospicyup" target="_blank" rel="noopener noreferrer" class="footer-correo">@somospicyup</a></div></div><p class="footer-copy">© 2026 Spicy Up | El sabor que te prende 🔥</p></footer>
+</body>
+</html>
