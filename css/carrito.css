@@ -1,0 +1,429 @@
+/* ==========================================================
+   SPICY UP · CARRITO DE COMPRAS
+   Estilos independientes: conserva intacto el diseño principal.
+   ========================================================== */
+
+.carrito-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10010;
+    background: rgba(0, 0, 0, .76);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .28s ease, visibility .28s ease;
+}
+
+.carrito-overlay.activo {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.carrito-panel {
+    position: fixed;
+    z-index: 10011;
+    top: 0;
+    right: 0;
+    width: min(460px, 100%);
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    background:
+        radial-gradient(circle at 100% 0, rgba(247, 148, 29, .12), transparent 34%),
+        #111;
+    border-left: 3px solid #ffd200;
+    box-shadow: -18px 0 55px rgba(0, 0, 0, .55);
+    transform: translateX(105%);
+    visibility: hidden;
+    transition: transform .32s ease, visibility .32s ease;
+}
+
+.carrito-panel.activo {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.carrito-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 22px 18px;
+    border-bottom: 1px solid #343434;
+    background: rgba(0, 0, 0, .24);
+}
+
+.carrito-eyebrow {
+    color: #f7941d;
+    font: 800 .68rem "Nunito", Arial, sans-serif;
+    letter-spacing: 2px;
+}
+
+.carrito-header h2 {
+    margin: 5px 0 0;
+    color: #ffd200;
+    font: 400 1.8rem/1.1 "Lilita One", Impact, sans-serif;
+    letter-spacing: .5px;
+}
+
+.carrito-cerrar {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #484848;
+    border-radius: 50%;
+    background: #222;
+    color: #fff;
+    font: 400 1.8rem/1 Arial, sans-serif;
+    cursor: pointer;
+    transition: background .2s, border-color .2s, transform .2s;
+}
+
+.carrito-cerrar:hover {
+    background: #e8352b;
+    border-color: #e8352b;
+    transform: rotate(90deg);
+}
+
+.carrito-contenido {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 10px 22px 22px;
+    scrollbar-color: #f7941d #191919;
+}
+
+.carrito-vacio {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 22px 10px;
+}
+
+.carrito-vacio-icono {
+    display: grid;
+    place-items: center;
+    width: 92px;
+    height: 92px;
+    margin-bottom: 18px;
+    border: 2px dashed #f7941d;
+    border-radius: 50%;
+    background: #1c1c1c;
+    font-size: 2.8rem;
+}
+
+.carrito-vacio h3 {
+    margin: 0 0 8px;
+    color: #ffd200;
+    font: 400 1.45rem "Lilita One", Impact, sans-serif;
+}
+
+.carrito-vacio p {
+    max-width: 290px;
+    margin: 0 0 20px;
+    color: #bcbcbc;
+    font: 400 .95rem/1.6 "Nunito", Arial, sans-serif;
+}
+
+.carrito-seguir {
+    padding: 11px 20px;
+    border: 0;
+    border-radius: 24px;
+    background: #ffd200;
+    color: #111;
+    font: 400 .95rem "Lilita One", Impact, sans-serif;
+    cursor: pointer;
+}
+
+.carrito-item {
+    display: grid;
+    grid-template-columns: 86px minmax(0, 1fr);
+    align-items: start;
+    gap: 15px;
+    padding: 18px 0;
+    border-bottom: 1px solid #303030;
+    animation: carrito-entrada .25s ease both;
+}
+
+@keyframes carrito-entrada {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.carrito-item > img {
+    display: block;
+    width: 86px;
+    height: 96px;
+    padding: 8px;
+    box-sizing: border-box;
+    object-fit: contain;
+    border: 2px solid #f7941d;
+    border-radius: 16px;
+    background: #fff;
+}
+
+.carrito-item-info {
+    min-width: 0;
+}
+
+.carrito-item-info h3 {
+    margin: 1px 0 5px;
+    color: #ffd200;
+    font: 400 1.25rem/1.2 "Lilita One", Impact, sans-serif;
+    overflow-wrap: anywhere;
+}
+
+.carrito-item-info p {
+    margin: 0 0 8px;
+    color: #c5c5c5;
+    font: 400 .82rem/1.45 "Nunito", Arial, sans-serif;
+}
+
+.carrito-item-precio {
+    display: inline-block;
+    margin: 0 0 12px;
+    padding: 4px 9px;
+    border: 1px dashed rgba(255, 210, 0, .65);
+    border-radius: 8px;
+    color: #ffd200;
+    font: 800 .73rem "Nunito", Arial, sans-serif;
+}
+
+.carrito-item-controles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.carrito-cantidad {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 7px;
+    border: 1px solid #444;
+    border-radius: 24px;
+    background: #1b1b1b;
+}
+
+.carrito-cantidad span {
+    min-width: 12px;
+    color: #fff;
+    text-align: center;
+    font: 800 .9rem "Nunito", Arial, sans-serif;
+}
+
+.carrito-cantidad button {
+    display: grid;
+    place-items: center;
+    width: 27px;
+    height: 27px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #ffd200;
+    color: #111;
+    font: 800 1.1rem Arial, sans-serif;
+    cursor: pointer;
+    transition: transform .15s, background .15s;
+}
+
+.carrito-cantidad button:hover {
+    background: #fff;
+    transform: scale(1.08);
+}
+
+.carrito-eliminar {
+    padding: 6px 2px;
+    border: 0;
+    background: transparent;
+    color: #ff786c;
+    font: 800 .78rem "Nunito", Arial, sans-serif;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.carrito-eliminar:hover {
+    color: #ffb0a9;
+}
+
+.carrito-footer {
+    flex: 0 0 auto;
+    padding: 18px 22px max(18px, env(safe-area-inset-bottom));
+    border-top: 1px solid #383838;
+    background: #181818;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, .16);
+}
+
+.carrito-resumen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 9px;
+    color: #dedede;
+    font: 700 .9rem "Nunito", Arial, sans-serif;
+}
+
+.carrito-resumen strong {
+    color: #ffd200;
+    font-size: 1rem;
+}
+
+.carrito-nota {
+    margin: 14px 0;
+    color: #aaa;
+    font: 400 .78rem/1.5 "Nunito", Arial, sans-serif;
+}
+
+.carrito-btn {
+    width: 100%;
+    min-height: 48px;
+    padding: 13px 16px;
+    border: 0;
+    border-radius: 28px;
+    background: linear-gradient(100deg, #ffd200, #f7941d);
+    box-shadow: 0 4px 0 #a75d00;
+    color: #111;
+    font: 400 1rem "Lilita One", Impact, sans-serif;
+    letter-spacing: .4px;
+    cursor: pointer;
+    transition: filter .2s, box-shadow .2s, transform .2s;
+}
+
+.carrito-btn:hover:not(:disabled) {
+    filter: brightness(1.08);
+    box-shadow: 0 5px 0 #a75d00, 0 0 20px rgba(255, 210, 0, .18);
+}
+
+.carrito-btn:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #a75d00;
+}
+
+.carrito-btn:disabled,
+.carrito-vaciar:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+.carrito-vaciar {
+    display: block;
+    margin: 13px auto 0;
+    padding: 6px 10px;
+    border: 0;
+    background: transparent;
+    color: #ff786c;
+    font: 700 .82rem "Nunito", Arial, sans-serif;
+    cursor: pointer;
+}
+
+.carrito-vaciar:hover:not(:disabled) {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.carrito-resumen-copiar {
+    margin: 12px 0 18px;
+    padding: 14px;
+    border: 1px solid #484848;
+    border-radius: 14px;
+    background: #191919;
+}
+
+.carrito-resumen-copiar textarea {
+    display: block;
+    width: 100%;
+    min-height: 130px;
+    margin-bottom: 12px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background: #0c0c0c;
+    color: #fff;
+    font: 400 .85rem/1.5 "Nunito", Arial, sans-serif;
+}
+
+.carrito-bloqueado {
+    overflow: hidden;
+}
+
+.carrito-panel button:focus-visible,
+.carrito-overlay:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    .carrito-panel {
+        border-left-width: 2px;
+    }
+
+    .carrito-header {
+        padding: 18px 16px 15px;
+    }
+
+    .carrito-contenido {
+        padding: 8px 16px 18px;
+    }
+
+    .carrito-footer {
+        padding: 15px 16px max(15px, env(safe-area-inset-bottom));
+    }
+
+    .carrito-item {
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .carrito-item > img {
+        width: 72px;
+        height: 82px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carrito-overlay,
+    .carrito-panel,
+    .carrito-cerrar,
+    .carrito-cantidad button,
+    .carrito-btn {
+        transition: none;
+    }
+
+    .carrito-item {
+        animation: none;
+    }
+}
+
+
+/* Precio unitario, subtotal y total del pedido */
+.carrito-total {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(255, 210, 0, .55);
+    font-size: 1.05rem;
+}
+.carrito-total strong {
+    color: #ffd200;
+    font: 400 1.55rem "Lilita One", Impact, sans-serif;
+    text-align: right;
+}
+.carrito-item-precio {
+    display: block;
+    line-height: 1.5;
+}
+.carrito-pedir:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+}

@@ -1,0 +1,353 @@
+/* ==========================================================
+   SPICY UP · contacto.css
+   Mismo lenguaje visual que el index: fondo oscuro con motivos
+   outline, tarjetas tipo sticker y botones con sombra dura.
+   Las variables de color vienen de header-footer.css.
+   ========================================================== */
+
+   :root {
+    --borde-radius: 28px;
+    --patron: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200' fill='none' stroke='white' stroke-opacity='.07' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='45' cy='45' r='22'/><circle cx='45' cy='45' r='16'/><path d='M45 23V67M23 45H67M29 29L61 61M61 29L29 61'/><path d='M140 100C150 115 162 122 158 140C155 154 142 160 133 156C122 151 118 138 124 126C128 133 132 134 134 130C136 120 134 110 140 100Z'/><path d='M110 30Q135 20 150 45Q155 60 170 62Q150 75 135 60Q112 50 110 30Z'/><path d='M110 30L104 22'/></svg>");
+}
+
+html {
+    scrollbar-color: var(--naranja) #111;
+}
+
+body {
+    margin: 0;
+    background-color: var(--negro);
+    color: #fff;
+    font-family: var(--fuente-texto);
+    overflow-x: hidden;
+}
+
+/* ---------- Sección ---------- */
+.contacto {
+    position: relative;
+    padding: 80px 24px 90px;
+    text-align: center;
+    overflow: hidden;
+    background-image:
+        var(--patron),
+        radial-gradient(circle 420px at 8% 30%, rgba(232, 53, 43, 0.2), transparent),
+        radial-gradient(circle 420px at 92% 80%, rgba(255, 210, 0, 0.14), transparent);
+    background-size: 200px 200px, auto, auto;
+}
+
+/* "HOLA" gigante en outline detrás de todo */
+.contacto::before {
+    content: "HOLA";
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 210, 0, 0.12);
+    font-family: var(--fuente-titulo);
+    font-size: clamp(9rem, 30vw, 24rem);
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.contacto > * {
+    position: relative;
+}
+
+.contacto-titulo {
+    margin-bottom: 14px;
+    color: var(--amarillo);
+    font-family: var(--fuente-titulo);
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px 0 var(--rojo), 6px 6px 0 rgba(0, 0, 0, 0.55);
+}
+
+.contacto-intro {
+    max-width: 44ch;
+    margin: 0 auto 52px;
+    color: #d6d6d6;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* ---------- Tarjetas ---------- */
+.contacto-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px 36px;
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+.contacto-card {
+    position: relative;
+    flex: 1 1 320px;
+    max-width: 480px;
+    padding: 38px 34px 68px;
+    border-radius: var(--borde-radius);
+    background: linear-gradient(160deg, var(--negro-carta), #0a0a0a);
+    text-align: left;
+    overflow: hidden;
+}
+
+.contacto-info {
+    border: 2px solid var(--rojo);
+    box-shadow: 8px 8px 0 var(--rojo);
+}
+
+.contacto-form {
+    border: 2px solid var(--amarillo);
+    box-shadow: 8px 8px 0 var(--amarillo);
+}
+
+.badge {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-family: var(--fuente-titulo);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.badge-rojo {
+    background: var(--rojo);
+    color: #fff;
+}
+
+.contacto-info h2,
+.contacto-form h2 {
+    margin: 0 0 14px;
+    font-family: var(--fuente-titulo);
+    font-weight: 400;
+    font-size: 1.9rem;
+    line-height: 1.2;
+}
+
+.text-amarillo {
+    color: var(--amarillo);
+}
+
+.contacto-texto {
+    margin-bottom: 26px;
+    color: var(--gris-texto);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ---------- Botones (sombra dura, se hunden al presionar) ---------- */
+.btn {
+    display: inline-block;
+    padding: 13px 30px;
+    border: none;
+    border-radius: 30px;
+    font-family: var(--fuente-titulo);
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(4px);
+}
+
+.btn-amarillo {
+    background: linear-gradient(90deg, var(--amarillo), var(--naranja));
+    box-shadow: 0 5px 0 #b86a00;
+    color: #1a1a1a;
+}
+
+.btn-amarillo:hover { box-shadow: 0 7px 0 #b86a00; }
+.btn-amarillo:active { box-shadow: 0 1px 0 #b86a00; }
+
+.btn-rojo {
+    float: right;
+    margin-top: 12px;
+    background: var(--rojo);
+    box-shadow: 0 5px 0 #8f1c15;
+    color: #fff;
+}
+
+.btn-rojo:hover { box-shadow: 0 7px 0 #8f1c15; }
+.btn-rojo:active { box-shadow: 0 1px 0 #8f1c15; }
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+/* ---------- Datos de contacto ---------- */
+.contacto-datos {
+    list-style: none;
+    margin: 34px 0 0;
+    padding: 0;
+}
+
+.contacto-datos li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+}
+
+.icono-correo {
+    border: 2px solid var(--amarillo);
+    background: rgba(255, 210, 0, 0.12);
+    color: var(--amarillo);
+}
+
+.icono-ubicacion {
+    border: 2px solid var(--verde);
+    background: rgba(141, 198, 63, 0.12);
+}
+
+.dato-label {
+    display: block;
+    color: var(--gris-texto);
+    font-family: var(--fuente-titulo);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.dato-valor {
+    display: block;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+a.dato-valor:hover {
+    color: var(--amarillo);
+}
+
+/* ---------- Formulario ---------- */
+.form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-header h2 {
+    color: var(--amarillo);
+}
+
+.icono-fuego {
+    font-size: 1.6rem;
+}
+
+.contacto-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contacto-form form::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.contacto-form label {
+    margin: 18px 0 7px;
+    color: var(--gris-texto);
+    font-family: var(--fuente-titulo);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+    padding: 12px 16px;
+    border: 2px solid #2e2e2e;
+    border-radius: 12px;
+    background: #1c1c1c;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contacto-form input::placeholder,
+.contacto-form textarea::placeholder {
+    color: #707070;
+}
+
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+    outline: none;
+    border-color: var(--amarillo);
+    box-shadow: 0 0 0 4px rgba(255, 210, 0, 0.18);
+}
+
+/* ---------- Decoración y cierre ---------- */
+.decoracion {
+    position: absolute;
+    bottom: 14px;
+    font-size: 1.9rem;
+    opacity: 0.85;
+}
+
+.decoracion-lima { left: 16px; }
+.decoracion-fuego { right: 16px; }
+
+.contacto-footer-msg {
+    display: inline-block;
+    margin-top: 56px;
+    padding: 10px 22px;
+    border: 2px dashed rgba(141, 198, 63, 0.6);
+    border-radius: 30px;
+    background: rgba(13, 13, 13, 0.8);
+    color: #e4e4e4;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.contacto-footer-msg::before { content: "🔥 "; font-style: normal; }
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 480px) {
+    .contacto {
+        padding: 56px 16px 70px;
+    }
+
+    .contacto-card {
+        padding: 30px 22px 64px;
+    }
+
+    .btn-rojo {
+        float: none;
+        width: 100%;
+        margin-top: 18px;
+    }
+}
+
+.icono-instagram {
+    border: 2px solid var(--rojo);
+    background: rgba(232, 53, 43, 0.12);
+    font-size: 1rem;
+}
